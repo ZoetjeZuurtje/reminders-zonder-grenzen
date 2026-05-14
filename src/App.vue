@@ -2,7 +2,7 @@
 import Header from './components/Header.vue'
 import Countdown from './components/Countdown.vue'
 
-const targetDate = new Date('2026-05-13T18:00:00Z')
+// const targetDate = new Date('2026-05-13T18:00:00Z')
 const year = new Date().getFullYear()
 </script>
 
@@ -10,9 +10,9 @@ const year = new Date().getFullYear()
     <Header />
     <main id="center">
       <section class="mission">
-        <h2>You won't forget the bookmark.</h2>
-        <p class="lead">We won't let you</p><br>
-          <Countdown :target="targetDate" />
+        <h2>Duo hasn't forgotten.</h2>
+        <p class="lead">It will never</p><br>
+          <Countdown />
         
       </section>
 

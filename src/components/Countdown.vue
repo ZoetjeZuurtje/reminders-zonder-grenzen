@@ -15,9 +15,10 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 
-// target date — default to 3 days from now for demo purposes
-const now = new Date()
-const defaultTarget = new Date(now.getTime() + 3 * 24 * 60 * 60 * 1000)
+// target date — default to next midnight (start of next day)
+const defaultTarget = new Date()
+defaultTarget.setDate(defaultTarget.getDate() + 1)
+defaultTarget.setHours(0, 0, 0, 0)
 
 const props = defineProps<{ target?: string | number | Date }>()
 const targetDate = ref<Date>(props.target ? new Date(props.target as any) : defaultTarget)
@@ -32,6 +33,7 @@ let timer: number | undefined
 function update() {
 	const diff = Math.max(0, targetDate.value.getTime() - Date.now())
 	const s = Math.floor(diff / 1000)
+
 	const d = Math.floor(s / 86400)
 	const h = Math.floor((s % 86400) / 3600)
 	const m = Math.floor((s % 3600) / 60)
